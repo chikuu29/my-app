@@ -20,10 +20,7 @@ export default function TextForm(props) {
        
     
     }
-    const removespace=()=>{
-       var my_text =text.split(/[]+/);
-       setCount(my_text.join(' '))
-    }
+   
 
     return (
         <form>
@@ -35,7 +32,6 @@ export default function TextForm(props) {
             </div>
             <button type="button" className="btn btn-primary" onClick={myalert}>Submit</button>
             <button type="button" className="btn btn-primary m-2" onClick={copytext} >{copy}</button>
-            <button type="button" className="btn btn-warning m-2" onClick={removespace} >Remove White Space</button>
 
             <h1>Text Review</h1>
             <p>Word:{text.split(" ").length} Charactor No :{text.length}</p>
