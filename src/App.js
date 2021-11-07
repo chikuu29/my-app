@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import About from './Componet/About';
+import { NavBar } from './Componet/NavBar';
+import TextForm from './Componet/TextForm';
+import Alert from './Componet/Alert';
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
+  const [alert, setalert] = useState(null);
+  const showalert = (type, message) => {
+    setalert({
+      type: type,
+      message: message
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="container">
+          <NavBar />
+          <Routes>
+            <Route path='/about' element={<About />} />
+          </Routes>
+          <Routes>
+            
+            <Route path='/home' element={<TextForm showalert={showalert} Heading="Login Here" />} />
+          </Routes>
+          <Alert alertmsg={alert} />
+        </div>
+      </Router>
+    </>
   );
 }
 
